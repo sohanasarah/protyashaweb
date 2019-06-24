@@ -14,6 +14,7 @@ class Depot
      * @param  \Closure  $next
      * @return mixed
      */
+    /*
     public function handle($request, Closure $next)
     {
         //print_r($request->user()->user_role);
@@ -32,7 +33,16 @@ class Depot
         }
         elseif ($request->user()->user_role == 'marketing') {
             return redirect('/marketing');
-        }*/
+        }
+    } */
+
+    public function handle($request, Closure $next)
+    {
+        // if ($request->user() && $request->user()->user_role != 'depot-in-charge')
+        // {
+        //     return new Response(view('unauthorized')->with('user_role', 'depot-in-charge'));
+        // }
+            return $next($request);
     }
 
 }

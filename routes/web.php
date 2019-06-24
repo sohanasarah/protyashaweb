@@ -21,7 +21,7 @@ Route::get('/', 'Auth\LoginController@showLoginForm');
 Route::post('login', 'Auth\LoginController@login')->name('login');
 Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 
-Route::get('/', 'HomeController@index')->name('home');
+//Route::get('/', 'HomeController@index')->name('home');
 
 // Route::get('/', function(){
 //     echo "Hello Depot-in-charge";
@@ -33,9 +33,7 @@ Route::get('/', 'HomeController@index')->name('home');
 //     });
 // });
 
-Route::group(['prefix' => 'depot_user', 'middleware' => 'depot'], function () {
-    // Route::get('dashboard', function () {
-    //     return view('welcome');
-    // });
-    Route::get('/', 'HomeController@index')->name('home');
+Route::group(['prefix' => 'depot', 'middleware' => 'depot'], function () {
+    Route::get('/', 'HomeController@index');
+
 });
