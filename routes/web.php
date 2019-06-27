@@ -11,9 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('dashboard');
-});
+// Route::get('/', function () {
+//     return view('dashboard');
+// });
 
 Auth::routes();
 
@@ -21,19 +21,21 @@ Route::get('/', 'Auth\LoginController@showLoginForm');
 Route::post('login', 'Auth\LoginController@login')->name('login');
 Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 
-//Route::get('/', 'HomeController@index')->name('home');
+//Route::get('/', 'HomeController@index');
 
-// Route::get('/', function(){
-//     echo "Hello Depot-in-charge";
-// })->middleware('depot');
 
-// Route::group(['prefix' => 'user', 'middleware' => 'menu.user'], function () {
-//     Route::get('dashboard', function () {
-//         return view('welcome');
-//     });
-// });
+Route::group(['middleware' => ['auth', 'admin']], function() {
+    Route::get('/admin', 'HomeController@admin');
+});
 
-Route::group(['prefix' => 'depot', 'middleware' => 'depot'], function () {
-    Route::get('/', 'HomeController@index');
+Route::group(['middleware' => ['auth', 'depot']], function() {
+    Route::get('/depot', 'HomeController@depot');
+});
 
+Route::group(['middleware' => ['auth', 'division']], function() {
+    Route::get('division', 'HomeController@division');
+});
+
+Route::group(['middleware' => ['auth', 'marketing']], function() {
+    Route::get('/marketing', 'HomeController@division');
 });

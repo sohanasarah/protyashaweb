@@ -54,5 +54,41 @@ class User extends Authenticatable
         }
     }
 
+    public function isDepot(){
+        if($this->user_role == "depot-in-charge"){
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    public function isDivision(){
+        if($this->user_role == "divisional_manager"){
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    public function isMarketing(){
+        if($this->user_role == "marketing"){
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    public function isAdmin(){
+        if($this->user_role == "admin"){
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
 
 }

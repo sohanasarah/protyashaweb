@@ -18,7 +18,19 @@ class RedirectIfAuthenticated
     public function handle($request, Closure $next, $guard = null)
     {
         if (Auth::guard($guard)->check()) {
-            return redirect('/home');
+            if (Auth::user()->user_role == 'admin') {
+                return redirect('/admin');
+            }
+            else if (Auth::user()->user_role == 'depot-in-charge') {
+                return redirect('/depot');
+            }
+            else if (Auth::user()->user_role == 'divisional_manager') {
+                return redirect('/division');
+            }
+            else if (Auth::user()->user_role == 'marketing') {
+                return redirect('/marketing');
+            }
+
         }
 
         return $next($request);
