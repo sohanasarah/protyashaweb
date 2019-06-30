@@ -25,17 +25,17 @@ Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 
 
 Route::group(['middleware' => ['auth', 'admin']], function() {
-    Route::get('/admin', 'HomeController@admin');
+    Route::get('/admin', 'admin\DashboardController@index');
 });
 
 Route::group(['middleware' => ['auth', 'depot']], function() {
-    Route::get('/depot', 'HomeController@depot');
+    Route::get('/depot', 'depot\DashboardController@index');
 });
 
 Route::group(['middleware' => ['auth', 'division']], function() {
-    Route::get('division', 'HomeController@division');
+    Route::get('/division', 'division\DashboardController@index');
 });
 
 Route::group(['middleware' => ['auth', 'marketing']], function() {
-    Route::get('/marketing', 'HomeController@division');
+    Route::get('/marketing', 'marketing\DashboardController@index');
 });
