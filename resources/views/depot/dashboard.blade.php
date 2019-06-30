@@ -24,6 +24,7 @@
             </tr>
         </thead>
         <tbody>
+            {!! Library::bob('Sarah') !!}
             @if(count($depot_orders)>0)
             @foreach ($depot_orders as $orders)
             <tr>
