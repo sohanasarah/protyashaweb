@@ -4,11 +4,12 @@
 
 @section('content_header')
 <h1>Division Dashboard</h1>
+
 @stop
 
 @section('content')
 @if (Auth::check())
-<p>You are logged in! {{ session('user_name'). session('user_role') }}</p>
+<p>You are logged in! {{ session('user_name'). session('user_role')  }}</p>
 <div class="table-responsive">
     <table id="myTable" width="100%" class="table table-striped table-sm">
         <thead>

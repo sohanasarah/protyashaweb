@@ -41,20 +41,15 @@ class LoginController extends Controller
 
     protected function redirectTo()
     {
-        $user= Auth::user();
-        if($user->user_role=='admin'){
+        $user = Auth::user();
+        if ($user->user_role == 'admin') {
             return '/admin';
-        }
-        else if($user->user_role=='depot-in-charge'){
+        } else if ($user->user_role == 'depot-in-charge') {
             return '/depot';
-        }
-        else if($user->user_role=='divisional_manager'){
+        } else if ($user->user_role == 'divisional_manager') {
             return '/division';
-        }
-        else if($user->user_role=='marketing'){
+        } else if ($user->user_role == 'marketing') {
             return '/marketing';
         }
-
     }
-
 }

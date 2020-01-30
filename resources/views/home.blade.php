@@ -11,3 +11,6 @@
     <p>You are logged in! {{ session('user_name'). session('user_role') }}</p>
     @endif
 @stop
+
+@section('footer')
+@endsection
